@@ -2,8 +2,13 @@
 <pre>
         _______________
         |             |
+#if ($newHangman.getHead())
+        /\            |
+        \/            |
+#else
                       |
                       |
+#end
                       |
                       |
                       |
@@ -12,10 +17,10 @@
                 ______|____
 </pre>
 
-  <h4>Wrong Guesses:</h4>
-  #foreach ($letter in $newPuzzle.getWrongLetters())
-    $letter 
-  #end
+<h4>Wrong Guesses:</h4>
+#foreach ($letter in $newPuzzle.getWrongLetters())
+  $letter
+#end
 <form action='/' method='post'>
   <div class='form-group'>
     <label>Pick a letter!</label>

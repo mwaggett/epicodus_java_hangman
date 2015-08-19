@@ -43,6 +43,10 @@ public class Puzzle {
     return this;
   }
 
+  public int getWrongGuesses() {
+    return mWrongGuesses;
+  }
+
   public ArrayList<Character> getWrongLetters() {
     return mWrongLetters;
   }

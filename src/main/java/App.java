@@ -48,8 +48,13 @@ public class App {
         request.session().attribute("newHangman", newHangman);
       }
 
+      int previousGuesses = newPuzzle.getWrongGuesses();
       char guess = request.queryParams("guess").charAt(0);
       newPuzzle.guess(guess);
+
+      if (newPuzzle.getWrongGuesses() > previousGuesses) {
+        newHangman.addHead();
+      }
 
       model.put("newPuzzle", newPuzzle);
       model.put("newHangman", newHangman);

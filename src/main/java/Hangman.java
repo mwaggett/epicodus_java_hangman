@@ -12,4 +12,13 @@ public class Hangman {
     mPuzzle = puzzle;
   }
 
+  public boolean getHead() {
+    return mHead;
+  }
+
+  public Hangman addHead() {
+    mHead = true;
+    return this;
+  }
+
 }
