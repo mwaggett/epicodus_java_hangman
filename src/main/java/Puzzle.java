@@ -18,11 +18,13 @@ public class Puzzle {
   private char[] mWord;
   private int mWrongGuesses;
   private ArrayList<Character> mWrongLetters;
+  private int mWordLength;
 
   public Puzzle() {
     Puzzle.buildDictionary();
     String randomWord = wordDictionary.get(randomGenerator.nextInt(wordDictionary.size()));
     mWord = randomWord.toCharArray();
+    mWordLength = mWord.length;
     mWrongGuesses = 0;
     mWrongLetters = new ArrayList<Character>();
   }
@@ -41,6 +43,10 @@ public class Puzzle {
     }
 
     return this;
+  }
+
+  public int getWordLength() {
+    return mWordLength;
   }
 
   public int getWrongGuesses() {
