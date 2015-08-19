@@ -17,12 +17,14 @@ public class Puzzle {
 
   private char[] mWord;
   private int mWrongGuesses;
+  private ArrayList<Character> mWrongLetters;
 
   public Puzzle() {
     Puzzle.buildDictionary();
     String randomWord = wordDictionary.get(randomGenerator.nextInt(wordDictionary.size()));
     mWord = randomWord.toCharArray();
     mWrongGuesses = 0;
+    mWrongLetters = new ArrayList<Character>();
   }
 
   public Puzzle guess(char letter) {
@@ -35,8 +37,14 @@ public class Puzzle {
     }
     if (!matches) {
       mWrongGuesses ++;
+      mWrongLetters.add(letter);
     }
+
     return this;
+  }
+
+  public ArrayList<Character> getWrongLetters() {
+    return mWrongLetters;
   }
 
   public boolean gameOver() {

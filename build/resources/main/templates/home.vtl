@@ -1,8 +1,25 @@
-<h1>Change Calculator</h1>
-<form action='/newpage'>
+<h1>Hangman!</h1>
+<pre>
+        _______________
+        |             |
+                      |
+                      |
+                      |
+                      |
+                      |
+                      |
+                      |
+                ______|____
+</pre>
+
+  <h4>Wrong Guesses:</h4>
+  #foreach ($letter in $newPuzzle.getWrongLetters())
+    $letter 
+  #end
+<form action='/' method='post'>
   <div class='form-group'>
-    <label></label>
-    <input type="" name="" id="" class="form-control">
+    <label>Pick a letter!</label>
+    <input type="text" name="guess" id="guess" class="form-control">
   </div>
-  <button type="submit" id="" class='btn'>Submit!</button>
+  <button type="submit" id="" class='btn'>Guess!</button>
 </form>

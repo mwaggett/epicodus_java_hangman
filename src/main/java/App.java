@@ -16,9 +16,48 @@ public class App {
 
     get("/", (request, response) -> {
       HashMap model = new HashMap();
+
+      Puzzle newPuzzle = request.session().attribute("newPuzzle");
+      if (newPuzzle==null) {
+        newPuzzle = new Puzzle();
+        request.session().attribute("newPuzzle", newPuzzle);
+      }
+
+      Hangman newHangman = request.session().attribute("newHangman");
+      if (newHangman==null) {
+        newHangman = new Hangman(newPuzzle);
+        request.session().attribute("newHangman", newHangman);
+      }
+
       model.put("template", "templates/home.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/", (request, response) -> {
+      HashMap model = new HashMap();
+
+      Puzzle newPuzzle = request.session().attribute("newPuzzle");
+      if (newPuzzle==null) {
+        newPuzzle = new Puzzle();
+        request.session().attribute("newPuzzle", newPuzzle);
+      }
+
+      Hangman newHangman = request.session().attribute("newHangman");
+      if (newHangman==null) {
+        newHangman = new Hangman(newPuzzle);
+        request.session().attribute("newHangman", newHangman);
+      }
+
+      char guess = request.queryParams("guess").charAt(0);
+      newPuzzle.guess(guess);
+
+      model.put("newPuzzle", newPuzzle);
+      model.put("newHangman", newHangman);
+
+      model.put("template", "templates/home.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
 
     // get("/newpage", (request, response) -> {
     //   HashMap model = new HashMap();
